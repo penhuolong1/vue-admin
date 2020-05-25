@@ -1,14 +1,23 @@
 <template>
     <div class="app-wrapper">
-      <div class="left-wrapper"></div>
+      <div class="left-wrapper">
+        <sideBar></sideBar>
+      </div>
       <div class="right-wrapper">
-        <div class="nav-wrapper"></div>
-        <div class="hmain-wrapper"></div>
+        <div class="nav-wrapper">
+          <navBar />
+        </div>
+        <div class="hmain-wrapper">
+          <appMain></appMain>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
+import sideBar from './components/sideBar/index'
+import appMain from './components/appMain'
+import navBar from './components/navBar'
 export default {
   data () {
     return {
@@ -19,7 +28,9 @@ export default {
 
   },
   components: {
-
+    sideBar,
+    appMain,
+    navBar
   },
   created () {
 
@@ -43,6 +54,9 @@ export default {
     left: 0px;
     width: 210px;
     background-color: $blue;
+  }
+  &>.right-wrapper {
+    margin-left: 210px;
   }
 }
 </style>
