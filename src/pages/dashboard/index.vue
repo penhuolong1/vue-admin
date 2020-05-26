@@ -1,8 +1,6 @@
 <template>
     <div>
-      <keep-alive>
-        <router-view />
-      </keep-alive>
+      首页
     </div>
 </template>
 

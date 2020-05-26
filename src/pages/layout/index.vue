@@ -7,7 +7,7 @@
         <div class="nav-wrapper">
           <navBar />
         </div>
-        <div class="hmain-wrapper">
+        <div class="main-wrapper">
           <appMain></appMain>
         </div>
       </div>
