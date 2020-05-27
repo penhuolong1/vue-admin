@@ -1,5 +1,5 @@
 import {getToken, setToken, removeToken} from '@/utils/auth.js'
-import { login, logout, userInfo} from '@/api/user'
+import {login, logout, userInfo} from '@/api/user'
 const user = {
   state: {
     name: '',
