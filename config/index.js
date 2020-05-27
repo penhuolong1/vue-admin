@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'https://www.fastmock.site/mock/f05bcaf7a3d91e76e3aa7f22e3d4488a/vueadmin',
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": ""
+        },
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

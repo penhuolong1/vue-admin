@@ -6,6 +6,11 @@ Vue.use(Router)
 
 const constantRoutes = [
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/pages/login/login')
+  },
+  {
     path: '/',
     name: 'dashboard',
     component: Layout,
@@ -67,6 +72,7 @@ export const asyncRoutes = [
   {
     path: '/icon',
     component: Layout,
+    onlychild: true, // 判断是否只存在一个子节点如果只有一个则不显示父节点
     children: [
       {
         path: 'index',
@@ -138,6 +144,20 @@ export const asyncRoutes = [
   }
 ]
 
-export default new Router({
-  routes: [...constantRoutes, ...asyncRoutes]
+const createRouter = () => new Router({
+  mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
 })
+
+const router = createRouter()
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+// 重置路由
+
+export function resetRouter () {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
+export default router

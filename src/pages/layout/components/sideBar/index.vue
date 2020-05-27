@@ -11,7 +11,7 @@
       mode="vertical"
       :unique-opened="false"
       >
-        <sidebarItem v-for="item in routesData"
+        <sidebarItem v-for="item in getRouters"
         :key="item.path"
         :item="item"
         :basePath="item.path">
@@ -21,12 +21,11 @@
 </template>
 
 <script>
-import { asyncRoutes } from '@/router/index'
+import { mapGetters } from 'vuex'
 import sidebarItem from './sidebarItem'
 export default {
   data () {
     return {
-      routesData: asyncRoutes
     }
   },
   props: {
@@ -36,12 +35,13 @@ export default {
     sidebarItem
   },
   created () {
-    console.log(this.$route)
+    console.log(this.getRouters)
   },
   mounted () {
 
   },
   computed: {
+    ...mapGetters(['getRouters']),
     activeMenu () {
       const route = this.$route
       const {path} = route

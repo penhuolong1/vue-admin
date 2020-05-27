@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-submenu v-if="item.children && item.children.length > 1" :index="item.path" data->
+    <el-submenu v-if="item.children && item.children.length > 0 && !item.onlychild" :index="item.path" data->
       <template slot="title">
         <i v-if="item.meta && item.meta.icon" class="item.meta.icon"></i>
         <span>{{item.name}}</span>
@@ -10,7 +10,7 @@
        :item="child"
        :basePath="basePath+'/'+child.path"></sidebarItem>
     </el-submenu>
-    <el-menu-item v-if="item.children && item.children.length == 1" :index="this.basePath+'/'+item.children[0].path"
+    <el-menu-item v-if="item.children && item.children.length == 1 && item.onlychild" :index="this.basePath+'/'+item.children[0].path"
      @click.native="goPath(basePath+'/'+item.children[0].path)">
       <template slot="title">
         <i v-if="item.children[0].meta && item.children[0].meta.icon" class="item.children[0].meta.icon"></i>
@@ -41,9 +41,6 @@ export default {
     basePath: {
       type: String
     }
-  },
-  components: {
-
   },
   created () {
     // console.log(this.basePath)
