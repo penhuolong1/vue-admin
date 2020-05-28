@@ -34,7 +34,7 @@
             <el-dropdown-item>首页</el-dropdown-item>
             <el-dropdown-item>项目地址</el-dropdown-item>
             <el-dropdown-item>Docs</el-dropdown-item>
-            <el-dropdown-item divided>退出登录</el-dropdown-item>
+            <el-dropdown-item divided @click.native="loginOut">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -61,7 +61,9 @@ export default {
 
   },
   methods: {
-
+    loginOut () {
+      this.$store.dispatch('loginOut')
+    }
   }
 }
 </script>
@@ -72,6 +74,7 @@ export default {
   line-height: 50px;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
   &>div {
     display: flex;
   }

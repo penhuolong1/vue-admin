@@ -95,33 +95,33 @@ export const asyncRoutes = [
       {
         path: 'menu1',
         component: () => import('@/pages/dashboard/index'), // Parent router-view
-        name: 'Menu1',
+        name: '菜单1',
         meta: { title: 'Menu 1' },
         redirect: '/nested/menu1/menu1-1',
         children: [
           {
             path: 'menu1-1',
             component: () => import('@/pages/dashboard/index'),
-            name: 'Menu1-1',
+            name: '菜单1-1',
             meta: { title: 'Menu 1-1' }
           },
           {
             path: 'menu1-2',
             component: () => import('@/pages/dashboard/index'),
-            name: 'Menu1-2',
+            name: '菜单1-2',
             redirect: '/nested/menu1/menu1-2/menu1-2-1',
             meta: { title: 'Menu 1-2' },
             children: [
               {
                 path: 'menu1-2-1',
                 component: () => import('@/pages/dashboard/index'),
-                name: 'Menu1-2-1',
+                name: '菜单1-2-1',
                 meta: { title: 'Menu 1-2-1' }
               },
               {
                 path: 'menu1-2-2',
                 component: () => import('@/pages/dashboard/index'),
-                name: 'Menu1-2-2',
+                name: '菜单1-2-2',
                 meta: { title: 'Menu 1-2-2' }
               }
             ]
@@ -129,7 +129,7 @@ export const asyncRoutes = [
           {
             path: 'menu1-3',
             component: () => import('@/pages/dashboard/index'),
-            name: 'Menu1-3',
+            name: '菜单1-3',
             meta: { title: 'Menu 1-3' }
           }
         ]
@@ -143,6 +143,13 @@ export const asyncRoutes = [
     ]
   }
 ]
+
+// 处理 Vue-router 报NavigationDuplicated的可能解决方案 https://www.cnblogs.com/rever/p/11577322.html
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 
 const createRouter = () => new Router({
   mode: 'history', // require service support

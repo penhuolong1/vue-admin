@@ -35,7 +35,6 @@ export default {
     sidebarItem
   },
   created () {
-    console.log(this.getRouters)
   },
   mounted () {
 
@@ -45,7 +44,6 @@ export default {
     activeMenu () {
       const route = this.$route
       const {path} = route
-      console.log(path)
       return path
     }
   },

@@ -6,6 +6,7 @@
       <div class="right-wrapper">
         <div class="nav-wrapper">
           <navBar />
+          <tagView />
         </div>
         <div class="main-wrapper">
           <appMain></appMain>
@@ -18,6 +19,7 @@
 import sideBar from './components/sideBar/index'
 import appMain from './components/appMain'
 import navBar from './components/navBar'
+import tagView from './components/tagView/index'
 export default {
   data () {
     return {
@@ -30,7 +32,8 @@ export default {
   components: {
     sideBar,
     appMain,
-    navBar
+    navBar,
+    tagView
   },
   created () {
 

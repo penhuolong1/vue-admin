@@ -52,6 +52,7 @@ const user = {
           if (code === 200) {
             commit('SET_TOKEN', token)
             removeToken()
+            location.reload()
           }
         }).catch(err => {
           reject(err)

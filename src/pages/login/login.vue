@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     login () {
-      console.log(this.$refs.loginForm)
       this.$refs.loginForm.validate(vaild => {
         if (vaild) {
           this.$store.dispatch('login', {name: this.loginForm.name}).then(code => {

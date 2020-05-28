@@ -1,9 +1,12 @@
 import router from './router'
 import store from './store'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import {getToken} from '@/utils/auth.js'
 
 const whiteList = ['/login'] // 白名单
 router.beforeEach(async (to, from, next) => {
+  NProgress.start()
   const token = getToken()
   if (token) {
     if (to.path === '/login') {
@@ -27,4 +30,7 @@ router.beforeEach(async (to, from, next) => {
       next('/login')
     }
   }
+})
+router.afterEach(() => {
+  NProgress.done()
 })
