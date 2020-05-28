@@ -51,10 +51,16 @@ export default {
   },
   methods: {
     login () {
-      console.log(this.$store)
-      this.$store.dispatch('login', {name: 'admin'}).then(code => {
-        if (code === 200) {
-          this.$router.push('/')
+      console.log(this.$refs.loginForm)
+      this.$refs.loginForm.validate(vaild => {
+        if (vaild) {
+          this.$store.dispatch('login', {name: this.loginForm.name}).then(code => {
+            if (code === 200) {
+              this.$router.push('/')
+            }
+          })
+        } else {
+          console.log('验证失败')
         }
       })
     }

@@ -8,7 +8,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/styles/index.scss'
 import './icons/index'
-// import './permission.js' // 权限
+import './permission.js' // 权限
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
