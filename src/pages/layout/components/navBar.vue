@@ -1,9 +1,10 @@
 <template>
     <div class="header-wrapper">
       <div>
-        <div class="icon-wrapper">
+        <div class="icon-wrapper" @click="toggleMenu">
           <i class="el-icon-s-unfold menu-icon"></i>
         </div>
+        <navigation></navigation>
       </div>
       <div>
         <div class="icon-wrapper">
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+import navigation from './navigation'
 export default {
   data () {
     return {
@@ -52,7 +54,7 @@ export default {
 
   },
   components: {
-
+    navigation
   },
   created () {
 
@@ -63,6 +65,11 @@ export default {
   methods: {
     loginOut () {
       this.$store.dispatch('loginOut')
+    },
+    // 展开和隐藏菜单
+    toggleMenu () {
+      let isOpen = this.$store.state.sidebar.isOpen
+      this.$store.commit('SET_ISOPEN', !isOpen)
     }
   }
 }

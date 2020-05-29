@@ -1,9 +1,9 @@
 <template>
     <div class="app-wrapper">
-      <div class="left-wrapper">
+      <div class="left-wrapper" :style="{width: menuWidth+'px'}">
         <sideBar></sideBar>
       </div>
-      <div class="right-wrapper">
+      <div class="right-wrapper" :style="{marginLeft: menuWidth+'px'}">
         <div class="nav-wrapper">
           <navBar />
           <tagView />
@@ -23,7 +23,7 @@ import tagView from './components/tagView/index'
 export default {
   data () {
     return {
-
+      menuWidth: 210
     }
   },
   props: {
@@ -34,6 +34,20 @@ export default {
     appMain,
     navBar,
     tagView
+  },
+  computed: {
+    getMenuIsOpen () { // 获取菜单是否打开状态
+      return this.$store.state.sidebar.isOpen
+    }
+  },
+  watch: {
+    getMenuIsOpen () { // 监听菜单是否打开
+      if (this.getMenuIsOpen) {
+        this.menuWidth = 64
+      } else {
+        this.menuWidth = 210
+      }
+    }
   },
   created () {
 

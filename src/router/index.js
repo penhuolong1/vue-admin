@@ -6,6 +6,18 @@ Vue.use(Router)
 
 const constantRoutes = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    name: '重定向',
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/pages/redirect/index')
+      }
+    ]
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/pages/login/login')
@@ -14,19 +26,24 @@ const constantRoutes = [
     path: '/',
     name: 'dashboard',
     component: Layout,
-    redirect: '/dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/pages/dashboard/index'),
-        name: '首页',
-        meta: {title: '首页', icon: 'el-icon-menu', affix: true}
-      }
-    ]
+    redirect: '/dashboard/index'
   }
 ]
 
 export const asyncRoutes = [
+  {
+    path: '/dashboard',
+    component: Layout,
+    onlychild: true, // 判断是否只存在一个子节点如果只有一个则不显示父节点
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/pages/dashboard/index'),
+        name: '首页',
+        meta: { title: 'Icons', icon: 'el-icon-location', noCache: true }
+      }
+    ]
+  },
   {
     path: '/permission',
     component: Layout,
@@ -89,7 +106,7 @@ export const asyncRoutes = [
     name: 'Nested',
     meta: {
       title: 'Nested Routes',
-      icon: 'nested'
+      icon: 'el-icon-location'
     },
     children: [
       {

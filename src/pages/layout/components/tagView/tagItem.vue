@@ -10,7 +10,9 @@ import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-
+      isShow: false,
+      left: 0,
+      top: 0
     }
   },
   props: {

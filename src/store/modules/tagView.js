@@ -31,6 +31,9 @@ const tagView = {
     },
     SET_INDEX: (state, index) => {
       state.tagViewActiveIndex = index
+    },
+    DEL_ALL_LIST: (state) => {
+      state.tagViewList = []
     }
   },
   actions: {

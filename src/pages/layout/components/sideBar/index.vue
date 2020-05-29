@@ -4,6 +4,7 @@
       :default-active="$route.path"
       @open="handleOpen"
       @close="handleClose"
+      :collapse="iscollapse"
       background-color="#324157"
       text-color="#fff"
       active-text-color="#ffd04b"
@@ -26,10 +27,16 @@ import sidebarItem from './sidebarItem'
 export default {
   data () {
     return {
+      iscollapse: false
     }
   },
   props: {
 
+  },
+  watch: {
+    getIsOpen () {
+      this.iscollapse = this.$store.state.sidebar.isOpen
+    }
   },
   components: {
     sidebarItem
@@ -41,10 +48,8 @@ export default {
   },
   computed: {
     ...mapGetters(['getRouters']),
-    activeMenu () {
-      const route = this.$route
-      const {path} = route
-      return path
+    getIsOpen () {
+      return this.$store.state.sidebar.isOpen
     }
   },
   methods: {

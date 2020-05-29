@@ -25,18 +25,33 @@ function filterAsyncRoutes (routes, roles) {
   })
   return ary
 }
+// 通过名字匹配路由
+function matchRoutes (routes, name) {
+  return routes.find(item => {
+    if (item.children) {
+      return matchRoutes(item.children, name)
+    } else {
+      return item.name === name
+    }
+  })
+}
 
 const router = {
   state: {
-    routers: []
+    routers: [],
+    navigatineRoutes: []
   },
   mutations: {
     setRouters (state, routes) {
       state.routers = routes
+    },
+    SET_NAVI_ROUTE (state, name) {
+      state.navigatineRoutes = matchRoutes(asyncRoutes, name)
     }
   },
   getters: {
-    getRouters: state => state.routers
+    getRouters: state => state.routers,
+    navigatineRoutes: state => state.navigatineRoutes
   },
   actions: {
     generateRoutes ({commit}, roles) {
