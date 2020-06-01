@@ -8,40 +8,48 @@
           </div>
           <div class="content">
             <div class="label">New Visits</div>
-            <div class="number">102400</div>
+            <div class="number">
+              <countTo :startVal='startNum' :endVal='102400' :duration='3000'></countTo>
+            </div>
           </div>
         </div>
       </el-col>
-      <el-col :md="6" :sm="6" :xs="6">
+      <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-message">
             <svg-icon icon-class="message"></svg-icon>
           </div>
           <div class="content">
             <div class="label">Message</div>
-            <div class="number">81212</div>
+            <div class="number">
+              <countTo :startVal='startNum' :endVal='81212' :duration='3000'></countTo>
+            </div>
           </div>
         </div>
       </el-col>
-      <el-col :md="6" :sm="6" :xs="6">
+      <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-shopping">
             <svg-icon icon-class="shopping"></svg-icon>
           </div>
           <div class="content">
             <div class="label">Shopping</div>
-            <div class="number">9280</div>
+            <div class="number">
+              <countTo :startVal='startNum' :endVal='9280' :duration='3000'></countTo>
+            </div>
           </div>
         </div>
       </el-col>
-      <el-col :md="6" :sm="6" :xs="6">
+      <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-money">
             <svg-icon icon-class="money"></svg-icon>
           </div>
           <div class="content">
             <div class="label">Money</div>
-            <div class="number">13600</div>
+            <div class="number">
+              <countTo :startVal='startNum' :endVal='13600' :duration='3000'></countTo>
+            </div>
           </div>
         </div>
       </el-col>
@@ -50,17 +58,18 @@
 </template>
 
 <script>
+import countTo from 'vue-count-to'
 export default {
   data () {
     return {
-
+      startNum: 0
     }
   },
   props: {
 
   },
   components: {
-
+    countTo
   },
   created () {
 
@@ -85,6 +94,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  margin-bottom: 10px;
   .icon-wrapper {
     font-size: 50px;
     width: 80px;
