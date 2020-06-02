@@ -3,15 +3,25 @@
       <panelGroup />
       <lineCharts />
       <el-row :gutter="20" style="margin-top: 20px;">
-         <el-col :md="8">
+         <el-col :md="24" :lg="8" :xl="8">
            <radarCharts />
          </el-col>
-         <el-col :md="8">
+         <el-col :md="24" :lg="8" :xl="8">
            <pieCharts />
          </el-col>
-         <el-col :md="8">
+         <el-col :md="24" :lg="8" :xl="8">
            <barcharts />
          </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :md="24" :lg="12" :xl="12">
+          <transactionTable />
+        </el-col>
+        <el-col :md="12" :lg="6" :xl="6">
+          <todoList />
+        </el-col>
+        <el-col :md="12" :lg="6" :xl="6">
+        </el-col>
       </el-row>
     </div>
 </template>
@@ -22,6 +32,8 @@ import lineCharts from './components/lineCharts'
 import radarCharts from './components/radarCharts'
 import pieCharts from './components/pieCharts'
 import barcharts from './components/barcharts'
+import transactionTable from './components/transactionTable'
+import todoList from './components/todoList'
 export default {
   data () {
     return {
@@ -36,7 +48,9 @@ export default {
     lineCharts,
     radarCharts,
     pieCharts,
-    barcharts
+    barcharts,
+    transactionTable,
+    todoList
   },
   created () {
 

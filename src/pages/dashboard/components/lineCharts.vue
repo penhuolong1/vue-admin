@@ -109,5 +109,6 @@ export default {
   width: 100%;
   background-color: #fff;
   padding-top: 30px;
+  margin-top: 10px;
 }
 </style>
