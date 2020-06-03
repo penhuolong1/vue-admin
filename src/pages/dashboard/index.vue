@@ -21,6 +21,7 @@
           <todoList />
         </el-col>
         <el-col :md="12" :lg="6" :xl="6">
+          <boxCard />
         </el-col>
       </el-row>
     </div>
@@ -34,6 +35,7 @@ import pieCharts from './components/pieCharts'
 import barcharts from './components/barcharts'
 import transactionTable from './components/transactionTable'
 import todoList from './components/todoList'
+import boxCard from './components/boxCard'
 export default {
   data () {
     return {
@@ -50,7 +52,8 @@ export default {
     pieCharts,
     barcharts,
     transactionTable,
-    todoList
+    todoList,
+    boxCard
   },
   created () {
 
