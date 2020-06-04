@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/node": "^14.0.5",
     "axios": "^0.19.2",
+    "driver.js": "^0.9.8",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
     "js-cookie": "^2.2.1",

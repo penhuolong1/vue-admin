@@ -74,6 +74,7 @@ export default {
   }
   &>.right-wrapper {
     margin-left: 210px;
+    overflow: hidden;
   }
 }
 </style>

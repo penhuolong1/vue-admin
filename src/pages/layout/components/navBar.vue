@@ -1,13 +1,13 @@
 <template>
     <div class="header-wrapper">
       <div>
-        <div class="icon-wrapper" @click="toggleMenu">
+        <div id="toggle-menu" class="icon-wrapper" @click="toggleMenu">
           <i class="el-icon-s-unfold menu-icon"></i>
         </div>
         <navigation></navigation>
       </div>
       <div>
-        <div class="icon-wrapper">
+        <div class="icon-wrapper" id="search-icon">
           <el-tooltip  effect="dark" content="搜索" placement="bottom">
             <i class="el-icon-search"></i>
           </el-tooltip>

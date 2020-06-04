@@ -45,6 +45,19 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/guide',
+    component: Layout,
+    onlychild: true, // 判断是否只存在一个子节点如果只有一个则不显示父节点
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/pages/guide/index'),
+        name: '引导页',
+        meta: { title: 'Icons', icon: 'el-icon-location', noCache: true }
+      }
+    ]
+  },
+  {
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
@@ -58,7 +71,7 @@ export const asyncRoutes = [
     children: [
       {
         path: 'page',
-        component: () => import('@/pages/dashboard/index'),
+        component: () => import('@/pages/permission/page'),
         name: '页面权限',
         meta: {
           title: 'Page Permission',
