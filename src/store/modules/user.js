@@ -73,6 +73,12 @@ const user = {
           reject(err)
         })
       })
+    },
+    changeRole: ({commit}, role) => {
+      commit('SET_ROLES', [role])
+      let token = `${role}-token`
+      console.log('12333333')
+      setToken(token)
     }
   }
 }

@@ -4,7 +4,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import {getToken} from '@/utils/auth.js'
 
-const whiteList = ['/login'] // 白名单
+const whiteList = ['/login', '/404'] // 白名单
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
   const token = getToken()

@@ -1,4 +1,4 @@
-import { asyncRoutes } from '@/router/'
+import { asyncRoutes } from '@/router/asyncRoutes'
 
 // 查找路由中是否含有这个角色
 function hasPermission (route, roles) {
