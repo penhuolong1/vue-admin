@@ -22,7 +22,10 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/pages/guide/index'),
         name: '引导页',
-        meta: { title: 'Icons', icon: 'el-icon-location', noCache: true }
+        meta: { title: 'Icons',
+          icon: 'el-icon-location',
+          roles: ['editor'],
+          noCache: true }
       }
     ]
   },
@@ -141,5 +144,25 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/components',
+    component: Layout,
+    redirect: '/components/richText',
+    alwaysShow: true, // will always show the root menu
+    name: '组件',
+    meta: {
+      title: 'Permission',
+      icon: 'el-icon-location',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'richText',
+        component: () => import('@/pages/components/richText'),
+        name: '富文本编辑'
+      }
+    ]
+  },
+
   { path: '*', redirect: '/404', hidden: true }
 ]

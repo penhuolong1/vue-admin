@@ -41,10 +41,9 @@
         <el-form-item label="权限">
           <el-tree
             :data="data"
+            ref="tree"
             show-checkbox
-            node-key="id"
-            :default-expanded-keys="[2, 3]"
-            :default-checked-keys="[5]"
+            node-key="path"
             :props="defaultProps">
           </el-tree>
         </el-form-item>
@@ -54,6 +53,7 @@
 </template>
 
 <script>
+import {asyncRoutes} from '@/router/asyncRoutes'
 export default {
   data () {
     return {
@@ -74,41 +74,7 @@ export default {
       roleForm: {
         name: ''
       },
-      data: [{
-        id: 1,
-        label: '一级 1',
-        children: [{
-          id: 4,
-          label: '二级 1-1',
-          children: [{
-            id: 9,
-            label: '三级 1-1-1'
-          }, {
-            id: 10,
-            label: '三级 1-1-2'
-          }]
-        }]
-      }, {
-        id: 2,
-        label: '一级 2',
-        children: [{
-          id: 5,
-          label: '二级 2-1'
-        }, {
-          id: 6,
-          label: '二级 2-2'
-        }]
-      }, {
-        id: 3,
-        label: '一级 3',
-        children: [{
-          id: 7,
-          label: '二级 3-1'
-        }, {
-          id: 8,
-          label: '二级 3-2'
-        }]
-      }],
+      data: [],
       defaultProps: {
         children: 'children',
         label: 'label'
@@ -122,7 +88,7 @@ export default {
 
   },
   created () {
-
+    this.data = this.getData(asyncRoutes)
   },
   mounted () {
 
@@ -130,7 +96,73 @@ export default {
   methods: {
     edit () {
       this.visible = true
+      this.$nextTick(() => {
+        let ary = this.getData(asyncRoutes, '', 'editor')
+        console.log(ary)
+        this.$refs.tree.setCheckedNodes([
+          {path: '/dashboard/index', label: '首页'},
+          {path: '/guide/index', label: '引导页'},
+          {path: '/page/',
+            label: '权限',
+            children: [
+              {path: '/permission/directive', label: '指令权限'}
+            ]}
+        ])
+      })
     },
+    // 获取树控件数据
+    getData (route, baseUrl = '', role) {
+      let res = []
+      if (route && route.length > 0) {
+        route.forEach(item => {
+          if (item.hidden) {
+            return false
+          }
+          // 没有子节点的情况下
+          if (!item.children || item.children.length === 0) {
+            if (role) {
+              if (item.meta.roles && item.meta.roles.indexOf(role) === -1) {
+                return true
+              }
+            }
+            let obj = {
+              path: `${baseUrl}/${item.path}`,
+              label: item.name
+            }
+            res.push(obj)
+          }
+          // 只有一个子节点的情况
+          if (item.children && item.children.length === 1 && item.onlychild) {
+            if (role) {
+              if (item.children[0].meta.roles && item.children[0].meta.roles.indexOf(role) === -1) {
+                return true
+              }
+            }
+            let obj = {
+              path: `${item.path}/${item.children[0].path}`,
+              label: item.children[0].name
+            }
+            res.push(obj)
+          }
+          // 当有多个子节点的情况
+          if (item.children && item.children.length > 1) {
+            if (role) {
+              if (item.meta.roles && item.meta.roles.indexOf(role) === -1) {
+                return true
+              }
+            }
+            let obj = {
+              path: `${baseUrl}/${item.children[0].path}/`,
+              label: item.name,
+              children: this.getData(item.children, item.path, role)
+            }
+            res.push(obj)
+          }
+        })
+      }
+      return res
+    },
+    // 添加角色
     addRole () {
 
     }

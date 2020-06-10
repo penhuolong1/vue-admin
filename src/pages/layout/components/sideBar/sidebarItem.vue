@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-submenu v-if="item.children && item.children.length > 0 && !item.onlychild" :index="item.path">
+    <el-submenu v-if="item.children && item.children.length > 0 && !item.onlychild && !item.hidden" :index="item.path">
       <template slot="title">
         <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
         <span slot="title">{{item.name}}</span>
@@ -12,14 +12,14 @@
     </el-submenu>
 
     <!-- 当菜单下面只有一个菜单时 -->
-    <el-menu-item v-if="item.children && item.children.length == 1 && item.onlychild" :index="this.basePath+'/'+item.children[0].path"
+    <el-menu-item v-if="item.children && item.children.length == 1 && item.onlychild && !item.hidden" :index="this.basePath+'/'+item.children[0].path"
      @click.native="goPath(basePath+'/'+item.children[0].path)">
-        <i v-if="item.children[0].meta && item.children[0].meta.icon"     :class="item.children[0].meta.icon"></i>
+        <i v-if="item.children[0].meta && item.children[0].meta.icon"  :class="item.children[0].meta.icon"></i>
         <span slot="title">{{item.children[0].name}}</span>
     </el-menu-item>
 
     <!-- 当菜单下面没有菜单时 -->
-    <el-menu-item v-if="!item.children" :index="basePath"
+    <el-menu-item v-if="!item.children && !item.hidden" :index="basePath"
     @click.native="goPath(basePath)">
       <i v-if="item.meta && item.meta.icon" class="item.meta.icon"></i>
       <span>{{item.name}}</span>
