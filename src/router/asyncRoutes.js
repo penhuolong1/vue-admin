@@ -160,6 +160,11 @@ export const asyncRoutes = [
         path: 'richText',
         component: () => import('@/pages/components/richText'),
         name: '富文本编辑'
+      },
+      {
+        path: 'syncModal',
+        component: () => import('@/pages/components/syncModal'),
+        name: '父子组件同步数据'
       }
     ]
   },

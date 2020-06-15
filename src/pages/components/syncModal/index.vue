@@ -1,25 +1,25 @@
 <template>
   <div class="content-wrapper">
     <aside>
-      通过tinymce来实现富文本编辑
+      通过sync来实现父子组件的数据同步
     </aside>
-    <tinymceEditor></tinymceEditor>
+    <child :inputValue.sync="value"></child>
   </div>
 </template>
 
 <script>
-import tinymceEditor from '@/components/tinymceEditor'
+import child from './child'
 export default {
   data () {
     return {
-
+      value: '父组件传来的数据'
     }
   },
   props: {
 
   },
   components: {
-    tinymceEditor
+    child
   },
   created () {
 

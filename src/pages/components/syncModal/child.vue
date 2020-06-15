@@ -1,14 +1,11 @@
 <template>
-  <div class="content-wrapper">
-    <aside>
-      通过tinymce来实现富文本编辑
-    </aside>
-    <tinymceEditor></tinymceEditor>
+  <div>
+    <el-input :value="inputValue" @input="input"></el-input>
+    <div>{{inputValue}}</div>
   </div>
 </template>
 
 <script>
-import tinymceEditor from '@/components/tinymceEditor'
 export default {
   data () {
     return {
@@ -16,10 +13,12 @@ export default {
     }
   },
   props: {
-
+    inputValue: {
+      type: String
+    }
   },
   components: {
-    tinymceEditor
+
   },
   created () {
 
@@ -28,7 +27,9 @@ export default {
 
   },
   methods: {
-
+    input (e) {
+      this.$emit('update:inputValue', e)
+    }
   }
 }
 </script>
