@@ -1,0 +1,40 @@
+export const modes = [{
+  value: 'text/css',
+  label: 'CSS'
+}, {
+  value: 'text/javascript',
+  label: 'Javascript'
+}, {
+  value: 'text/html',
+  label: 'XML/HTML'
+}, {
+  value: 'text/x-java',
+  label: 'Java'
+}, {
+  value: 'text/x-objectivec',
+  label: 'Objective-C'
+}, {
+  value: 'text/x-python',
+  label: 'Python'
+}, {
+  value: 'text/x-rsrc',
+  label: 'R'
+}, {
+  value: 'text/x-sh',
+  label: 'Shell'
+}, {
+  value: 'text/x-sql',
+  label: 'SQL'
+}, {
+  value: 'text/x-swift',
+  label: 'Swift'
+}, {
+  value: 'text/x-vue',
+  label: 'Vue'
+}, {
+  value: 'text/markdown',
+  label: 'Markdown'
+}, {
+  value: 'application/json',
+  label: 'json'
+}]

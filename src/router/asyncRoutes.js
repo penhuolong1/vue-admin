@@ -165,6 +165,21 @@ export const asyncRoutes = [
         path: 'syncModal',
         component: () => import('@/pages/components/syncModal'),
         name: '父子组件同步数据'
+      },
+      {
+        path: 'markdown',
+        component: () => import('@/pages/components/markDown'),
+        name: 'markdown'
+      },
+      {
+        path: 'codeEditor',
+        component: () => import('@/pages/components/code-editor'),
+        name: '代码编辑'
+      },
+      {
+        path: 'splitspan',
+        component: () => import('@/pages/components/splitspan'),
+        name: 'splitspan'
       }
     ]
   },

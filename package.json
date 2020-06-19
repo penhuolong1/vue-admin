@@ -14,6 +14,7 @@
     "@tinymce/tinymce-vue": "^3.2.2",
     "@types/node": "^14.0.5",
     "axios": "^0.19.2",
+    "codemirror": "^5.54.0",
     "driver.js": "^0.9.8",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
@@ -23,10 +24,13 @@
     "nprogress": "^0.2.0",
     "path-to-regexp": "^6.1.0",
     "tinymce": "^5.3.1",
+    "tui-editor": "^1.4.10",
     "vue": "^2.5.2",
+    "vue-codemirror": "^4.0.6",
     "vue-cookies": "^1.7.0",
     "vue-count-to": "^1.0.13",
     "vue-router": "^3.0.1",
+    "vue-splitpane": "^1.0.6",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
