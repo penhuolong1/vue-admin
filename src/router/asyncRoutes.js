@@ -180,7 +180,17 @@ export const asyncRoutes = [
         path: 'splitspan',
         component: () => import('@/pages/components/splitspan'),
         name: 'splitspan'
+      },
+      {
+        path: 'sticky',
+        component: () => import('@/pages/components/sticky'),
+        name: 'sticky'
       }
+      // {
+      //   path: 'avatar-upload',
+      //   component: () => import('@/pages/components/avatar-upload'),
+      //   name: '头像上传'
+      // }
     ]
   },
 
