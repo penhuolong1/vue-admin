@@ -185,6 +185,11 @@ export const asyncRoutes = [
         path: 'sticky',
         component: () => import('@/pages/components/sticky'),
         name: 'sticky'
+      },
+      {
+        path: 'miniCom',
+        component: () => import('@/pages/components/miniCom'),
+        name: '小组件'
       }
       // {
       //   path: 'avatar-upload',
