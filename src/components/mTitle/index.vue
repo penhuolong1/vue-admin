@@ -1,8 +1,8 @@
 <template>
     <div class="m-title-wrapper">
       <span>{{text}}
-        <span class="span span1"></span>
-        <span class="span span2"></span>
+        <span class="span span1" :data-letters="text"></span>
+        <span class="span span2" :data-letters="text"></span>
       </span>
     </div>
 </template>
@@ -36,13 +36,13 @@ export default {
 
 <style scoped lang="scss">
 .m-title-wrapper {
-  float: right;
   line-height: 60px;
   font-weight: bolder;
   margin-right: 20px;
   cursor: pointer;
   font-size: 20px;
   color: #4dd9d5;
+  display: inline-block;
   overflow: hidden;
   &:hover {
     &>span {
@@ -89,7 +89,7 @@ export default {
       top: 0;
       overflow: hidden;
       &::before {
-        content: 'vue-admin';
+        content: attr(data-letters);
         position: absolute;
         left: 0px;
         top: 0;

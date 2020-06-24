@@ -7,7 +7,7 @@
       <div class="avator-wrapper">
         <img src="http://img2.imgtn.bdimg.com/it/u=433095846,3800291930&fm=11&gp=0.jpg" alt="">
       </div>
-      <mTitle :text="'vue-admin'"/>
+      <mTitle style="float:right;" :text="'vue-admin'"/>
       <div class="clear"></div>
     </div>
     <div class="progress-wrapper">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import mTitle from './title'
+import mTitle from '@/components/mTitle'
 export default {
   data () {
     return {

@@ -34,7 +34,30 @@
           <div slot="header" class="clearfix">
             <span>Material Design 的input</span>
           </div>
-          <div class="card-body"></div>
+          <div class="card-body">
+            <mdInput :label="'标题'" :value.sync="mdinputvalue"></mdInput>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card>
+          <div slot="header" class="clearfix">
+            <span>图片的hover效果</span>
+          </div>
+          <div class="card-body">
+            <imgHover :title="'vue-element-admin'"
+            :url="'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'"></imgHover>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card>
+          <div slot="header" class="clearfix">
+            <span>水波纹效果</span>
+          </div>
+          <div class="card-body">
+            <el-button v-waves type="primary">水波纹</el-button>
+          </div>
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -42,23 +65,21 @@
           <div slot="header" class="clearfix">
             <span>Material Design 的input</span>
           </div>
-          <div class="card-body"></div>
+          <div class="card-body">
+            <mTitle :text="'vue-element'"></mTitle>
+          </div>
         </el-card>
       </el-col>
+    </el-row>
+    <el-row :gutter="20" style="margin-top: 20px;">
       <el-col :span="6">
         <el-card>
           <div slot="header" class="clearfix">
-            <span>Material Design 的input</span>
+            <span>share</span>
           </div>
-          <div class="card-body"></div>
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card>
-          <div slot="header" class="clearfix">
-            <span>Material Design 的input</span>
+          <div class="card-body">
+            <dropdownMenu :articleList="articleList"></dropdownMenu>
           </div>
-          <div class="card-body"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -67,20 +88,40 @@
 
 <script>
 import lineBtn from '@/components/btns/line-btn'
+import mdInput from '@/components/mdInput'
+import imgHover from '@/components/imgHover/index'
+import mTitle from '@/components/mTitle/index'
+import dropdownMenu from '@/components/dropdownMenu/index'
+import waves from '@/directives/waves/index.js'
+
 export default {
   data () {
     return {
-
+      mdinputvalue: '',
+      articleList: [
+        { title: '基础篇' },
+        { title: '登录权限篇' },
+        { title: '实战篇' },
+        { title: 'vue-admin-template 篇' },
+        { title: 'v4.0 篇' },
+        { title: '优雅的使用 icon' }
+      ]
     }
+  },
+  directives: {
+    waves
   },
   props: {
 
   },
   components: {
-    lineBtn
+    lineBtn,
+    mdInput,
+    imgHover,
+    mTitle,
+    dropdownMenu
   },
   created () {
-
   },
   mounted () {
 
@@ -96,6 +137,7 @@ export default {
   .card-body {
     padding: 20px;
     overflow: hidden;
+    min-height: 150px;
   }
   .text-center {
     text-align: center;
