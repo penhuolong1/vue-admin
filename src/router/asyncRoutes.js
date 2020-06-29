@@ -190,12 +190,22 @@ export const asyncRoutes = [
         path: 'miniCom',
         component: () => import('@/pages/components/miniCom'),
         name: '小组件'
+      },
+      {
+        path: 'backToTop',
+        component: () => import('@/pages/components/backToTop'),
+        name: '返回顶部'
+      },
+      {
+        path: 'dragDialog',
+        component: () => import('@/pages/components/dragDialog'),
+        name: '拖拽的dialog'
+      },
+      {
+        path: 'dragSelect',
+        component: () => import('@/pages/components/dragSelect'),
+        name: '拖拽的select'
       }
-      // {
-      //   path: 'avatar-upload',
-      //   component: () => import('@/pages/components/avatar-upload'),
-      //   name: '头像上传'
-      // }
     ]
   },
 
