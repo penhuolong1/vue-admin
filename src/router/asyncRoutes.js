@@ -218,6 +218,35 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/charts',
+    component: Layout,
+    redirect: '/charts/keyboard',
+    alwaysShow: true, // will always show the root menu
+    name: '图表',
+    meta: {
+      title: '图表',
+      icon: 'el-icon-location',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'keyboard',
+        component: () => import('@/pages/charts/keyboard'),
+        name: '键盘图表'
+      },
+      {
+        path: 'line',
+        component: () => import('@/pages/charts/line'),
+        name: '折线图'
+      },
+      {
+        path: 'mixCharts',
+        component: () => import('@/pages/charts/mixCharts'),
+        name: '混合图表'
+      }
+    ]
+  },
 
   { path: '*', redirect: '/404', hidden: true }
 ]
