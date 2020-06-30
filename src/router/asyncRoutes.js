@@ -205,6 +205,16 @@ export const asyncRoutes = [
         path: 'dragSelect',
         component: () => import('@/pages/components/dragSelect'),
         name: '拖拽的select'
+      },
+      {
+        path: 'dragList',
+        component: () => import('@/pages/components/dragList'),
+        name: '拖拽的列表'
+      },
+      {
+        path: 'dragKanban',
+        component: () => import('@/pages/components/dragKanban'),
+        name: '拖拽的看板'
       }
     ]
   },
