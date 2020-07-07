@@ -1,7 +1,7 @@
 <template>
   <div class="img-hover-wrapper">
     <div class="text-wrapper">
-      <span>{{title}}</span>
+      <span>{{ title }}</span>
     </div>
     <div class="img-wrapper">
       <img :src="url">
@@ -11,22 +11,28 @@
 
 <script>
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    url: {
+      type: String,
+      default: null
+    },
+    title: {
+      type: String,
+      default: null
+    }
+  },
+  data() {
     return {
 
     }
   },
-  props: {
-    url: null,
-    title: null
-  },
-  components: {
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

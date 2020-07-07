@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div/>
 </template>
 
 <script>
@@ -9,21 +9,24 @@ import 'tui-editor/dist/tui-editor-contents.css' // editor's content
 import 'codemirror/lib/codemirror.css' // codemirror
 import 'highlight.js/styles/github.css'
 export default {
-  data () {
+  components: {},
+  props: {
+    content: {
+      type: String,
+      default: null
+    }
+  },
+  data() {
     return {
       instance: null
     }
   },
-  props: {
-    content: null
-  },
-  components: {},
-  created () {},
-  mounted () {
+  created() {},
+  mounted() {
     this.init()
   },
   methods: {
-    init () {
+    init() {
       this.instance = new Editor({
         el: this.$el,
         initialEditType: 'markdown',

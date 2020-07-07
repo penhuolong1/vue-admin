@@ -1,67 +1,74 @@
 <template>
-  <div class="md-input-wrapper" :class="mdClass">
-    <input type="text"
-    :value="value"
-    @input="handleModelInput"
-    @focus="handleMdFocus"
-    @blur="handleMdBlur"/>
-    <label class="md-label">{{label}}</label>
-    <p class="md-bar"></p>
+  <div :class="mdClass" class="md-input-wrapper">
+    <input
+      :value="value"
+      type="text"
+      @input="handleModelInput"
+      @focus="handleMdFocus"
+      @blur="handleMdBlur">
+    <label class="md-label">{{ label }}</label>
+    <p class="md-bar"/>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    label: {
+      type: String,
+      default: null
+    },
+    value: {
+      type: String,
+      default: null
+    }
+  },
+  data() {
     return {
       isFocus: false,
       isValue: false
     }
   },
-  watch: {
-    value () {
-      this.init()
-    }
-  },
-  props: {
-    label: null,
-    value: null
-  },
   computed: {
-    mdClass () {
+    mdClass() {
       return {
         'md-active': this.isFocus || this.isValue
       }
     }
   },
-  components: {
-
+  watch: {
+    value() {
+      this.init()
+    }
   },
-  created () {
+  created() {
     this.init()
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    handleModelInput (e) {
+    handleModelInput(e) {
       if (e.target.value === '') {
         this.isValue = false
       }
       this.$emit('update:value', e.target.value)
     },
     // 初始化数据
-    init () {
+    init() {
       if (this.value) {
         this.isValue = true
       }
     },
     // 获取焦点触发
-    handleMdFocus () {
+    handleMdFocus() {
       this.isFocus = true
     },
     // 失去焦点触发
-    handleMdBlur () {
+    handleMdBlur() {
       this.isFocus = false
     }
   }

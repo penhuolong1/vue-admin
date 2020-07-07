@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="back-to-top-icon" @click="backtoTop" v-show="isVisible">
-      <i class="el-icon-caret-top"></i>
+    <div v-show="isVisible" class="back-to-top-icon" @click="backtoTop">
+      <i class="el-icon-caret-top"/>
     </div>
   </transition>
 </template>
@@ -9,10 +9,8 @@
 <script>
 let timer = null
 export default {
-  data () {
-    return {
-      isVisible: false
-    }
+  components: {
+
   },
   props: {
     visibilityHeight: {
@@ -20,33 +18,35 @@ export default {
       default: 400
     }
   },
-  components: {
+  data() {
+    return {
+      isVisible: false
+    }
+  },
+  created() {
 
   },
-  created () {
-
-  },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll)
     if (timer) {
       clearInterval(timer)
     }
   },
-  mounted () {
+  mounted() {
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
     // 处理滚动事件
-    handleScroll () {
+    handleScroll() {
       this.isVisible = window.pageYOffset > this.visibilityHeight
     },
     // 返回顶部
-    backtoTop () {
-      timer = setInterval(function () {
+    backtoTop() {
+      timer = setInterval(function() {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
         var ispeed = Math.floor(-scrollTop / 6)
         console.log(timer)
-        if (scrollTop == 0) {
+        if (scrollTop === 0) {
           clearInterval(timer)
           return
         }

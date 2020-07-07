@@ -1,19 +1,18 @@
 <template>
   <div class="code-editor-wrapper">
-    <textarea ref="editor"></textarea>
+    <textarea ref="editor"/>
     <el-select v-model="mode" class="mode-select" placeholder="请选择" @change="changeMode">
       <el-option
         v-for="item in modes"
         :key="item.value"
         :label="item.label"
-        :value="item.value">
-      </el-option>
+        :value="item.value"/>
     </el-select>
   </div>
 </template>
 
 <script>
-import {modes} from './modes'
+import { modes } from './modes'
 import codemirror from 'codemirror'
 // 核心样式
 import 'codemirror/lib/codemirror.css'
@@ -35,28 +34,28 @@ import 'codemirror/mode/sql/sql.js'
 import 'codemirror/mode/swift/swift.js'
 import 'codemirror/mode/vue/vue.js'
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    content: null
+  },
+  data() {
     return {
       code: '',
       modes: modes,
       mode: 'application/json'
     }
   },
-  props: {
-    content: null
-  },
-  components: {
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
     this.init()
   },
   methods: {
     // 初始化codemirror
-    init () {
+    init() {
       this.code = codemirror.fromTextArea(this.$refs.editor, {
         // 缩进格式
         tabSize: 2,
@@ -75,7 +74,7 @@ export default {
       })
     },
     // 选择模式
-    changeMode (val) {
+    changeMode(val) {
       this.code.setOption('mode', val)
     }
   }

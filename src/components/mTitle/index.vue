@@ -1,31 +1,32 @@
 <template>
-    <div class="m-title-wrapper">
-      <span>{{text}}
-        <span class="span span1" :data-letters="text"></span>
-        <span class="span span2" :data-letters="text"></span>
-      </span>
-    </div>
+  <div class="m-title-wrapper">
+    <span>{{ text }}
+      <span :data-letters="text" class="span span1"/>
+      <span :data-letters="text" class="span span2"/>
+    </span>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    text: {
+      type: String,
+      default: null
+    }
+  },
+  data() {
     return {
 
     }
   },
-  props: {
-    text: {
-      type: String
-    }
-  },
-  components: {
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

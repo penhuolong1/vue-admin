@@ -1,18 +1,16 @@
 <template>
-  <div class="dropdown-menu-wrapper" :class="{'active': isActive}">
+  <div :class="{'active': isActive}" class="dropdown-menu-wrapper">
     <ul >
       <li @click="clickTitle">系列文章</li>
-      <li v-for="(item, index) in articleList" :key="index">{{item.title}}</li>
+      <li v-for="(item, index) in articleList" :key="index">{{ item.title }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      isActive: false
-    }
+  components: {
+
   },
   props: {
     articleList: {
@@ -20,18 +18,20 @@ export default {
       default: null
     }
   },
-  components: {
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {
     // 点击头部
-    clickTitle () {
+    clickTitle() {
       this.isActive = !this.isActive
     }
   }

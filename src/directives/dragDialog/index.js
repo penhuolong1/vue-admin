@@ -1,6 +1,6 @@
 import dragDialog from './dragDialog'
 
-const install = function (Vue) {
+const install = function(Vue) {
   Vue.directive('dragDialog', dragDialog)
 }
 if (window.Vue) {

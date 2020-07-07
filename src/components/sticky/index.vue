@@ -1,19 +1,15 @@
 <template>
   <div>
     <div :style="styleObj">
-      <slot></slot>
+      <slot/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      top: 0,
-      styleObj: {
-      }
-    }
+  components: {
+
   },
   props: {
     scrollTop: {
@@ -25,18 +21,22 @@ export default {
       default: 0
     }
   },
-  components: {
-
+  data() {
+    return {
+      top: 0,
+      styleObj: {
+      }
+    }
   },
-  created () {
+  created() {
   },
-  mounted () {
+  mounted() {
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
-    handleScroll () {
-      let top = this.$el.getBoundingClientRect().top
-      let width = this.$el.getBoundingClientRect().width
+    handleScroll() {
+      const top = this.$el.getBoundingClientRect().top
+      const width = this.$el.getBoundingClientRect().width
       console.log(width)
       if (top <= this.scrollTop) {
         this.top = this.scrollTop
@@ -50,7 +50,7 @@ export default {
       }
       this.reset()
     },
-    reset () {
+    reset() {
       this.styleObj = {}
     }
   }

@@ -1,9 +1,9 @@
 <template>
   <div class="kanban-wrapper">
-    <h1>{{title}}</h1>
+    <h1>{{ title }}</h1>
     <draggable :list="list" :group="group" class="drag-kanban">
       <div v-for="(item, index) in list" :key="index" class="kanban-item">
-        {{item.name}}
+        {{ item.name }}
       </div>
     </draggable>
   </div>
@@ -12,9 +12,8 @@
 <script>
 import draggable from 'vuedraggable'
 export default {
-  data () {
-    return {
-    }
+  components: {
+    draggable
   },
   props: {
     title: {
@@ -27,23 +26,24 @@ export default {
     },
     list: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     }
   },
+  data() {
+    return {
+    }
+  },
   watch: {
-    list () {
+    list() {
       this.$emit('update:list', this.list)
     }
   },
-  components: {
-    draggable
-  },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {

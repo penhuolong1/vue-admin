@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="editor" id="tinymicId"></div>
+    <div id="tinymicId" class="editor"/>
   </div>
 </template>
 
@@ -8,25 +8,28 @@
 import load from '@/utils/dynamicLoadScript'
 const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js'
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    content: {
+      type: String,
+      default: null
+    }
+  },
+  data() {
     return {
 
     }
   },
-  props: {
-    content: null
-  },
-  components: {
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
     this.init()
   },
   methods: {
-    init () {
+    init() {
       load(tinymceCDN, err => {
         if (err) {
           console.log(err)
@@ -35,8 +38,8 @@ export default {
         this.initTinymce()
       })
     },
-    initTinymce () {
-      let that = this
+    initTinymce() {
+      const that = this
       window.tinymce.init({
         selector: '#tinymicId',
         language: 'zh_CN',

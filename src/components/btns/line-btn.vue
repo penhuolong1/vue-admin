@@ -1,42 +1,46 @@
 <template>
-  <div class="line-btns-wrapper"
+  <div
+    :style="{'background': bcColor, 'color': fontColor, '--bc': color}"
 
-  :style="{'background': bcColor, 'color': fontColor, '--bc': color}"
-  @mouseover="mouseOver"
-  @mouseleave="mouseLeave">
-    {{content}}
+    class="line-btns-wrapper"
+    @mouseover="mouseOver"
+    @mouseleave="mouseLeave">
+    {{ content }}
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      bcColor: null,
-      fontColor: '#fff'
-    }
+  components: {
+
   },
   props: {
     content: {
       type: String,
       default: ''
     },
-    color: null
+    color: {
+      type: String,
+      default: ''
+    }
   },
-  components: {
-
+  data() {
+    return {
+      bcColor: null,
+      fontColor: '#fff'
+    }
   },
-  created () {
+  created() {
     this.bcColor = this.color
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    mouseOver () {
+    mouseOver() {
       this.fontColor = this.color
       this.bcColor = '#fff'
     },
-    mouseLeave () {
+    mouseLeave() {
       this.fontColor = '#fff'
       this.bcColor = this.color
     }
