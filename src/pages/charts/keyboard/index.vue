@@ -1,26 +1,26 @@
 <template>
   <div class="chart-container">
-    <keyboard height="100%" width="100%" ></keyboard>
+    <keyboard height="100%" width="100%" />
   </div>
 </template>
 
 <script>
 import keyboard from '@/components/charts/keyboard'
 export default {
-  data () {
-    return {
-    }
+  components: {
+    keyboard
   },
   props: {
 
   },
-  components: {
-    keyboard
+  data() {
+    return {
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {

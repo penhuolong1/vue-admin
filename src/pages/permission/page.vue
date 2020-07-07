@@ -1,27 +1,27 @@
 <template>
   <div class="content-wrapper">
-    <changeRole></changeRole>
+    <changeRole/>
   </div>
 </template>
 
 <script>
 import changeRole from './components/changeRole'
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    changeRole
   },
   props: {
 
   },
-  components: {
-    changeRole
+  data() {
+    return {
+
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {

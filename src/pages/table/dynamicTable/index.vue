@@ -6,21 +6,21 @@
 
 <script>
 export default {
-  data () {
-    return {
+  components: {
 
-    }
   },
   props: {
 
   },
-  components: {
+  data() {
+    return {
+
+    }
+  },
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

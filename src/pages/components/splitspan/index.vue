@@ -3,17 +3,17 @@
     <aside>
       splitspan
     </aside>
-    <split-pane @resize="resize" :min-percent='20' :max-percent="40" split="vertical">
+    <split-pane :min-percent="20" :max-percent="40" split="vertical" @resize="resize">
       <template slot="paneL">
-        <div class="left"></div>
+        <div class="left"/>
       </template>
       <template slot="paneR">
-        <split-pane split="horizontal" :min-percent='20' :max-percent="40">
+        <split-pane :min-percent="20" :max-percent="40" split="horizontal">
           <template slot="paneL">
-            <div class="top"></div>
+            <div class="top"/>
           </template>
-          <template slot="paneR" :min-percent='20' :max-percent="40">
-            <div class="bottom"></div>
+          <template slot="paneR" :min-percent="20" :max-percent="40">
+            <div class="bottom"/>
           </template>
         </split-pane>
       </template>
@@ -24,25 +24,25 @@
 <script>
 import splitPane from 'vue-splitpane'
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    splitPane
   },
   props: {
 
   },
-  components: {
-    splitPane
+  data() {
+    return {
+
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    resize () {
+    resize() {
       console.log('resize')
     }
   }

@@ -1,18 +1,18 @@
 <template>
   <div class="content-wrapper">
     <aside>可拖拽的列表基于Vue.Draggable</aside>
-    <el-row class="drag-list-wrapper" :gutter="12">
+    <el-row :gutter="12" class="drag-list-wrapper">
       <el-col :span="12">
-        <draggable group="article" style="minHeight:30px;" :list="list1">
-          <div class="drag-list-item" v-for="(item, index) in list1" :key="index">{{item.name}}</div>
+        <draggable :list="list1" group="article" style="minHeight:30px;">
+          <div v-for="(item, index) in list1" :key="index" class="drag-list-item">{{ item.name }}</div>
         </draggable>
-        <p v-for="(item,index) in list1" :key="index">{{item.name}}</p>
+        <p v-for="(item,index) in list1" :key="index">{{ item.name }}</p>
       </el-col>
       <el-col :span="12">
-        <draggable group="article" style="minHeight:30px;" :list="list2">
-          <div class="drag-list-item" v-for="(item, index) in list2" :key="index">{{item.name}}</div>
+        <draggable :list="list2" group="article" style="minHeight:30px;">
+          <div v-for="(item, index) in list2" :key="index" class="drag-list-item">{{ item.name }}</div>
         </draggable>
-        <p v-for="(item,index) in list2" :key="index">{{item.name}}</p>
+        <p v-for="(item,index) in list2" :key="index">{{ item.name }}</p>
       </el-col>
     </el-row>
   </div>
@@ -21,7 +21,13 @@
 <script>
 import draggable from 'vuedraggable'
 export default {
-  data () {
+  components: {
+    draggable
+  },
+  props: {
+
+  },
+  data() {
     return {
       list1: [
         { name: 'John1', id: 1 },
@@ -37,16 +43,10 @@ export default {
       ]
     }
   },
-  props: {
+  created() {
 
   },
-  components: {
-    draggable
-  },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

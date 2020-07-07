@@ -2,7 +2,7 @@
   <div class="content-wrapper">
     <aside>拖拽的dialog</aside>
     <el-button type="primary" @click="openDialog">打开dialog</el-button>
-    <el-dialog v-dragDialog title="可移动的dialog" :visible.sync="visible">
+    <el-dialog v-dragDialog :visible.sync="visible" title="可移动的dialog">
       <div>可移动的dialog</div>
     </el-dialog>
   </div>
@@ -11,28 +11,28 @@
 <script>
 import dragDialog from '@/directives/dragDialog'
 export default {
-  data () {
-    return {
-      visible: false
-    }
-  },
-  props: {
-
-  },
   components: {
 
   },
   directives: {
     dragDialog
   },
-  created () {
+  props: {
 
   },
-  mounted () {
+  data() {
+    return {
+      visible: false
+    }
+  },
+  created() {
+
+  },
+  mounted() {
 
   },
   methods: {
-    openDialog () {
+    openDialog() {
       this.visible = true
     }
   }

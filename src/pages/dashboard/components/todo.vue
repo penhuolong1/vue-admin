@@ -1,66 +1,70 @@
 <template>
-    <li class="todo-wrapper" @dblclick="showEditInput" :class="{complate: item.done}">
-      <div class="todo-wrapper-left">
-        <input type="checkbox" :checked="item.done" @change="toggleTodo">
-        <span>{{item.text}}</span>
-      </div>
-      <div class="todo-wrapper-right">
-        <i class="el-icon-close" @click="delTodo"></i>
-      </div>
-      <el-input
-      v-model="input"
+  <li :class="{complate: item.done}" class="todo-wrapper" @dblclick="showEditInput">
+    <div class="todo-wrapper-left">
+      <input :checked="item.done" type="checkbox" @change="toggleTodo">
+      <span>{{ item.text }}</span>
+    </div>
+    <div class="todo-wrapper-right">
+      <i class="el-icon-close" @click="delTodo"/>
+    </div>
+    <el-input
       v-show="showEdit"
+      ref="inputRef"
+      v-model="input"
       class="edit-input"
       placeholder="请输入内容"
       @blur="editTodo"
-      ref="inputRef"
-      @keyup.enter.native="editTodo"></el-input>
-    </li>
+      @keyup.enter.native="editTodo"/>
+  </li>
 </template>
 
 <script>
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    item: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    },
+    index: {
+      type: Number,
+      default: null
+    }
+  },
+  data() {
     return {
       input: '',
       showEdit: false
     }
   },
-  props: {
-    item: {
-      type: Object
-    },
-    index: {
-      type: Number
-    }
-  },
-  components: {
-
-  },
-  created () {
+  created() {
     this.input = this.item.text
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    toggleTodo () {
+    toggleTodo() {
       this.$emit('toggleTodo', this.index)
     },
-    delTodo () {
+    delTodo() {
       this.$emit('delTodo', this.index)
     },
-    closeEdit () {
+    closeEdit() {
       this.showEdit = false
     },
-    showEditInput () {
+    showEditInput() {
       this.showEdit = true
-      let that = this
-      setTimeout(function () {
+      const that = this
+      setTimeout(function() {
         that.$refs.inputRef.$el.children[0].focus() // 使input框获得焦点
       }, 100)
     },
-    editTodo () {
+    editTodo() {
       if (!this.input) {
         this.$message({
           showClose: true,
@@ -69,7 +73,7 @@ export default {
         })
         return
       }
-      let params = {
+      const params = {
         input: this.input,
         index: this.index
       }

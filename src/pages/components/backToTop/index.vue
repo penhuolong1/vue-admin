@@ -2,34 +2,34 @@
   <div class="content-wrapper">
     <aside>页面滚动到指定位置会在右下角出现返回顶部按钮</aside>
     <div v-for="(item, index) in items" :key="index">
-      <p class="bc-top-item">{{item}}</p>
+      <p class="bc-top-item">{{ item }}</p>
     </div>
-    <backToTop></backToTop>
+    <backToTop/>
   </div>
 </template>
 
 <script>
 import backToTop from '@/components/backToTop/index'
 export default {
-  data () {
-    return {
-      items: []
-    }
+  components: {
+    backToTop
   },
   props: {
 
   },
-  components: {
-    backToTop
+  data() {
+    return {
+      items: []
+    }
   },
-  created () {
+  created() {
     this.init()
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    init () {
+    init() {
       for (let i = 0; i < 100; i++) {
         this.items.push('placeholder')
       }

@@ -1,33 +1,34 @@
 <template>
   <div>
-    <el-input :value="inputValue" @input="input"></el-input>
-    <div>{{inputValue}}</div>
+    <el-input :value="inputValue" @input="input"/>
+    <div>{{ inputValue }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    inputValue: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
     return {
 
     }
   },
-  props: {
-    inputValue: {
-      type: String
-    }
-  },
-  components: {
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    input (e) {
+    input(e) {
       this.$emit('update:inputValue', e)
     }
   }

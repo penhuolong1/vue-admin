@@ -3,14 +3,14 @@
     <aside>可拖拽的看板基于Vue.Draggable</aside>
     <el-row :gutter="20">
       <el-col :span="8">
-        <kanban :title="'todo'" :list.sync="list1" :group="group"></kanban>
-        <p v-for="(item, index) in list1" :key="index">{{item.name}}</p>
+        <kanban :title="'todo'" :list.sync="list1" :group="group"/>
+        <p v-for="(item, index) in list1" :key="index">{{ item.name }}</p>
       </el-col>
       <el-col :span="8">
-        <kanban :title="'working'" :list.sync="list2" :group="group"></kanban>
+        <kanban :title="'working'" :list.sync="list2" :group="group"/>
       </el-col>
       <el-col :span="8">
-        <kanban :title="'done'" :list.sync="list3" :group="group"></kanban>
+        <kanban :title="'done'" :list.sync="list3" :group="group"/>
       </el-col>
     </el-row>
   </div>
@@ -19,7 +19,13 @@
 <script>
 import kanban from '@/components/kanban'
 export default {
-  data () {
+  components: {
+    kanban
+  },
+  props: {
+
+  },
+  data() {
     return {
       group: 'mission',
       list1: [
@@ -40,16 +46,10 @@ export default {
       ]
     }
   },
-  props: {
+  created() {
 
   },
-  components: {
-    kanban
-  },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="radar-chatrs"></div>
+  <div class="radar-chatrs"/>
 </template>
 
 <script>
@@ -9,14 +9,18 @@ const animationDuration = 3000
 export default {
   components: {},
   props: {},
-  data () {
+  data() {
     return {
     }
   },
-  watch: {},
   computed: {},
+  watch: {},
+  created() {},
+  mounted() {
+    this.initCharts()
+  },
   methods: {
-    initCharts () {
+    initCharts() {
       var myChart = echarts.init(this.$el, 'macarons')
       // 绘制图表
       myChart.setOption({
@@ -78,10 +82,6 @@ export default {
         }]
       })
     }
-  },
-  created () {},
-  mounted () {
-    this.initCharts()
   }
 }
 </script>

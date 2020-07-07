@@ -4,12 +4,12 @@
       <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-people">
-            <svg-icon icon-class="peoples"></svg-icon>
+            <svg-icon icon-class="peoples"/>
           </div>
           <div class="content">
             <div class="label">New Visits</div>
             <div class="number">
-              <countTo :startVal='startNum' :endVal='102400' :duration='3000'></countTo>
+              <countTo :start-val="startNum" :end-val="102400" :duration="3000"/>
             </div>
           </div>
         </div>
@@ -17,12 +17,12 @@
       <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-message">
-            <svg-icon icon-class="message"></svg-icon>
+            <svg-icon icon-class="message"/>
           </div>
           <div class="content">
             <div class="label">Message</div>
             <div class="number">
-              <countTo :startVal='startNum' :endVal='81212' :duration='3000'></countTo>
+              <countTo :start-val="startNum" :end-val="81212" :duration="3000"/>
             </div>
           </div>
         </div>
@@ -30,12 +30,12 @@
       <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-shopping">
-            <svg-icon icon-class="shopping"></svg-icon>
+            <svg-icon icon-class="shopping"/>
           </div>
           <div class="content">
             <div class="label">Shopping</div>
             <div class="number">
-              <countTo :startVal='startNum' :endVal='9280' :duration='3000'></countTo>
+              <countTo :start-val="startNum" :end-val="9280" :duration="3000"/>
             </div>
           </div>
         </div>
@@ -43,12 +43,12 @@
       <el-col :md="6" :sm="12" :xs="12">
         <div class="panel-item">
           <div class="icon-wrapper icon-money">
-            <svg-icon icon-class="money"></svg-icon>
+            <svg-icon icon-class="money"/>
           </div>
           <div class="content">
             <div class="label">Money</div>
             <div class="number">
-              <countTo :startVal='startNum' :endVal='13600' :duration='3000'></countTo>
+              <countTo :start-val="startNum" :end-val="13600" :duration="3000"/>
             </div>
           </div>
         </div>
@@ -60,21 +60,21 @@
 <script>
 import countTo from 'vue-count-to'
 export default {
-  data () {
-    return {
-      startNum: 0
-    }
+  components: {
+    countTo
   },
   props: {
 
   },
-  components: {
-    countTo
+  data() {
+    return {
+      startNum: 0
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {

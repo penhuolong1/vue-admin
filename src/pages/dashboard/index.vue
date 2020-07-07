@@ -1,30 +1,30 @@
 <template>
-    <div class="dashboard-wrapper">
-      <panelGroup />
-      <lineCharts />
-      <el-row :gutter="20" style="margin-top: 20px;">
-         <el-col :md="24" :lg="8" :xl="8">
-           <radarCharts />
-         </el-col>
-         <el-col :md="24" :lg="8" :xl="8">
-           <pieCharts />
-         </el-col>
-         <el-col :md="24" :lg="8" :xl="8">
-           <barcharts />
-         </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :md="24" :lg="12" :xl="12">
-          <transactionTable />
-        </el-col>
-        <el-col :md="12" :lg="6" :xl="6">
-          <todoList />
-        </el-col>
-        <el-col :md="12" :lg="6" :xl="6">
-          <boxCard />
-        </el-col>
-      </el-row>
-    </div>
+  <div class="dashboard-wrapper">
+    <panelGroup />
+    <lineCharts />
+    <el-row :gutter="20" style="margin-top: 20px;">
+      <el-col :md="24" :lg="8" :xl="8">
+        <radarCharts />
+      </el-col>
+      <el-col :md="24" :lg="8" :xl="8">
+        <pieCharts />
+      </el-col>
+      <el-col :md="24" :lg="8" :xl="8">
+        <barcharts />
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :md="24" :lg="12" :xl="12">
+        <transactionTable />
+      </el-col>
+      <el-col :md="12" :lg="6" :xl="6">
+        <todoList />
+      </el-col>
+      <el-col :md="12" :lg="6" :xl="6">
+        <boxCard />
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -37,14 +37,6 @@ import transactionTable from './components/transactionTable'
 import todoList from './components/todoList'
 import boxCard from './components/boxCard'
 export default {
-  data () {
-    return {
-
-    }
-  },
-  props: {
-
-  },
   components: {
     panelGroup,
     lineCharts,
@@ -55,10 +47,18 @@ export default {
     todoList,
     boxCard
   },
-  created () {
+  props: {
 
   },
-  mounted () {
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
 
   },
   methods: {

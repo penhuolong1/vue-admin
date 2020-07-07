@@ -2,35 +2,37 @@
   <div class="todo-list-wrapper">
     <div class="title">
       <div class="icon">
-        <i class="el-icon-arrow-down"></i>
+        <i class="el-icon-arrow-down"/>
       </div>
       <div class="input">
-        <el-input v-model="input" placeholder="请输入内容" @keyup.enter.native="addTodo"></el-input>
+        <el-input v-model="input" placeholder="请输入内容" @keyup.enter.native="addTodo"/>
       </div>
     </div>
     <ul>
-      <todo v-for="(item, index) in filterTodoList"
-      :key="index"
-      :index="index"
-      :item="item"
-      @toggleTodo="toggleTodo"
-      @delTodo="delTodo"
-      @editTodo="editTodo"/>
+      <todo
+        v-for="(item, index) in filterTodoList"
+        :key="index"
+        :index="index"
+        :item="item"
+        @toggleTodo="toggleTodo"
+        @delTodo="delTodo"
+        @editTodo="editTodo"/>
     </ul>
     <footer>
-      <label>{{todoLength}} item left</label>
+      <label>{{ todoLength }} item left</label>
       <ul>
-        <li v-for="(val, key) in filters"
-        :class="{active: key === visibility}"
-        :key="key"
-        @click="visibility = key">{{key}}</li>
+        <li
+          v-for="(val, key) in filters"
+          :class="{active: key === visibility}"
+          :key="key"
+          @click="visibility = key">{{ key }}</li>
       </ul>
     </footer>
   </div>
 </template>
 
 <script>
-import {todoList} from '@/api/dashboard'
+import { todoList } from '@/api/dashboard'
 import todo from './todo'
 const filters = {
   all: todos => todos,
@@ -38,7 +40,13 @@ const filters = {
   completed: todos => todos.filter(todo => todo.done)
 }
 export default {
-  data () {
+  components: {
+    todo
+  },
+  props: {
+
+  },
+  data() {
     return {
       input: 'Todo List',
       todoListData: [],
@@ -46,28 +54,22 @@ export default {
       filters
     }
   },
-  props: {
-
-  },
-  components: {
-    todo
-  },
-  created () {
-    this.getTodoList()
-  },
-  mounted () {
-
-  },
   computed: {
-    filterTodoList () {
+    filterTodoList() {
       return filters[this.visibility](this.todoListData)
     },
-    todoLength () {
+    todoLength() {
       return this.todoListData.filter(todo => !todo.done).length
     }
   },
+  created() {
+    this.getTodoList()
+  },
+  mounted() {
+
+  },
   methods: {
-    getTodoList () {
+    getTodoList() {
       todoList().then(res => {
         console.log(res)
         if (res.data.code === 200) {
@@ -75,13 +77,13 @@ export default {
         }
       })
     },
-    toggleTodo (index) {
+    toggleTodo(index) {
       this.todoListData[index].done = !this.todoListData[index].done
     },
-    delTodo (index) {
+    delTodo(index) {
       this.todoListData.splice(index, 1)
     },
-    addTodo () {
+    addTodo() {
       console.log(this.input)
       if (!this.input) {
         this.$message({
@@ -97,7 +99,7 @@ export default {
       })
     },
     // 编辑文件
-    editTodo (params) {
+    editTodo(params) {
       this.todoListData[params.index].text = params.input
     }
   }

@@ -7,18 +7,18 @@
       <div class="avator-wrapper">
         <img src="http://img2.imgtn.bdimg.com/it/u=433095846,3800291930&fm=11&gp=0.jpg" alt="">
       </div>
-      <mTitle style="float:right;" :text="'vue-admin'"/>
-      <div class="clear"></div>
+      <mTitle :text="'vue-admin'" style="float:right;"/>
+      <div class="clear"/>
     </div>
     <div class="progress-wrapper">
-      <div class='title'>Vue</div>
-      <el-progress :percentage="70"></el-progress>
-      <div class='title'>JavaScript</div>
-      <el-progress :percentage="18"></el-progress>
-      <div class='title'>Css</div>
-      <el-progress :percentage="12"></el-progress>
-      <div class='title'>Eslint</div>
-      <el-progress :percentage="100" status="success"></el-progress>
+      <div class="title">Vue</div>
+      <el-progress :percentage="70"/>
+      <div class="title">JavaScript</div>
+      <el-progress :percentage="18"/>
+      <div class="title">Css</div>
+      <el-progress :percentage="12"/>
+      <div class="title">Eslint</div>
+      <el-progress :percentage="100" status="success"/>
     </div>
   </div>
 </template>
@@ -26,21 +26,21 @@
 <script>
 import mTitle from '@/components/mTitle'
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    mTitle
   },
   props: {
 
   },
-  components: {
-    mTitle
+  data() {
+    return {
+
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {

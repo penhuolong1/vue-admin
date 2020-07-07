@@ -1,5 +1,5 @@
 <template>
-  <div class="bar-charts"></div>
+  <div class="bar-charts"/>
 </template>
 
 <script>
@@ -8,14 +8,18 @@ require('echarts/theme/macarons')
 export default {
   components: {},
   props: {},
-  data () {
+  data() {
     return {
     }
   },
-  watch: {},
   computed: {},
+  watch: {},
+  created() {},
+  mounted() {
+    this.initCharts()
+  },
   methods: {
-    initCharts () {
+    initCharts() {
       var myChart = echarts.init(this.$el, 'macarons')
       // 绘制图表
       myChart.setOption({
@@ -55,10 +59,6 @@ export default {
         ]
       })
     }
-  },
-  created () {},
-  mounted () {
-    this.initCharts()
   }
 }
 </script>

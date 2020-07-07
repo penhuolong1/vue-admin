@@ -1,22 +1,27 @@
 <template>
   <div class="content-wrapper">
     <aside>用sortablej实现可拖拉的select</aside>
-    <el-select class="drag-select" ref="dragSelect" v-model="value1" multiple placeholder="请选择">
-    <el-option
-      v-for="item in options"
-      :key="item.value"
-      :label="item.label"
-      :value="item.value">
-    </el-option>
-  </el-select>
-  {{this.value1}}
+    <el-select ref="dragSelect" v-model="value1" class="drag-select" multiple placeholder="请选择">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"/>
+    </el-select>
+    {{ value1 }}
   </div>
 </template>
 
 <script>
 import Sortable from 'sortablejs'
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+
+  },
+  data() {
     return {
       options: [{
         value: '黄金糕',
@@ -38,20 +43,14 @@ export default {
       sortable: null
     }
   },
-  props: {
+  created() {
 
   },
-  components: {
-
-  },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
     this.init()
   },
   methods: {
-    init () {
+    init() {
       const el = this.$refs.dragSelect.$el.querySelectorAll('.el-select__tags > span')[0]
       this.sortable = new Sortable(el, {
         onEnd: e => {
@@ -62,7 +61,7 @@ export default {
   }
 }
 // 交换数组中两个位置元素
-function swapArr (arr, index1, index2) {
+function swapArr(arr, index1, index2) {
   arr[index1] = arr.splice(index2, 1, arr[index1])[0]
   return arr
 }

@@ -14,27 +14,27 @@ import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 import steps from './step'
 export default {
-  data () {
-    return {
-      driver: null
-    }
+  components: {
+
   },
   props: {
 
   },
-  components: {
+  data() {
+    return {
+      driver: null
+    }
+  },
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
     this.driver = new Driver({
       allowClose: false // 添加这个属性或者在@click方法后面添加prevent.stop 不然会造成显示了又马上会触发关闭方法 会造成闪一下的效果
     })
   },
   methods: {
-    guide () {
+    guide() {
       this.driver.defineSteps(steps)
       this.driver.start()
     }

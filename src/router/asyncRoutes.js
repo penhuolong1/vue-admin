@@ -247,6 +247,25 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/table',
+    component: Layout,
+    redirect: '/table/dynamicTable',
+    alwaysShow: true, // will always show the root menu
+    name: '表格',
+    meta: {
+      title: '表格',
+      icon: 'el-icon-location',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'dynamicTable',
+        component: () => import('@/pages/table/dynamicTable'),
+        name: '动态table'
+      }
+    ]
+  },
 
   { path: '*', redirect: '/404', hidden: true }
 ]

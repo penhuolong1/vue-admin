@@ -8,22 +8,22 @@
       <div class="card-body">
         <el-row :gutter="20">
           <el-col :span="4" class="text-center">
-            <lineBtn :content="'document'" :color="'#324157'"></lineBtn>
+            <lineBtn :content="'document'" :color="'#324157'"/>
           </el-col>
           <el-col :span="4" class="text-center">
-            <lineBtn :content="'icon'" :color="'#3a71a8'"></lineBtn>
+            <lineBtn :content="'icon'" :color="'#3a71a8'"/>
           </el-col>
           <el-col :span="4" class="text-center">
-            <lineBtn :content="'excel'" :color="'#e65d6e'"></lineBtn>
+            <lineBtn :content="'excel'" :color="'#e65d6e'"/>
           </el-col>
           <el-col :span="4" class="text-center">
-            <lineBtn :content="'table'" :color="'#30b08f'"></lineBtn>
+            <lineBtn :content="'table'" :color="'#30b08f'"/>
           </el-col>
           <el-col :span="4" class="text-center">
-            <lineBtn :content="'from'" :color="'#4ab7bd'"></lineBtn>
+            <lineBtn :content="'from'" :color="'#4ab7bd'"/>
           </el-col>
           <el-col :span="4" class="text-center">
-            <lineBtn :content="'theme'" :color="'#fec171'"></lineBtn>
+            <lineBtn :content="'theme'" :color="'#fec171'"/>
           </el-col>
         </el-row>
       </div>
@@ -35,7 +35,7 @@
             <span>Material Design 的input</span>
           </div>
           <div class="card-body">
-            <mdInput :label="'标题'" :value.sync="mdinputvalue"></mdInput>
+            <mdInput :label="'标题'" :value.sync="mdinputvalue"/>
           </div>
         </el-card>
       </el-col>
@@ -45,8 +45,9 @@
             <span>图片的hover效果</span>
           </div>
           <div class="card-body">
-            <imgHover :title="'vue-element-admin'"
-            :url="'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'"></imgHover>
+            <imgHover
+              :title="'vue-element-admin'"
+              :url="'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'"/>
           </div>
         </el-card>
       </el-col>
@@ -66,7 +67,7 @@
             <span>Material Design 的input</span>
           </div>
           <div class="card-body">
-            <mTitle :text="'vue-element'"></mTitle>
+            <mTitle :text="'vue-element'"/>
           </div>
         </el-card>
       </el-col>
@@ -78,7 +79,7 @@
             <span>share</span>
           </div>
           <div class="card-body">
-            <dropdownMenu :articleList="articleList"></dropdownMenu>
+            <dropdownMenu :article-list="articleList"/>
           </div>
         </el-card>
       </el-col>
@@ -95,7 +96,20 @@ import dropdownMenu from '@/components/dropdownMenu/index'
 import waves from '@/directives/waves/index.js'
 
 export default {
-  data () {
+  directives: {
+    waves
+  },
+  components: {
+    lineBtn,
+    mdInput,
+    imgHover,
+    mTitle,
+    dropdownMenu
+  },
+  props: {
+
+  },
+  data() {
     return {
       mdinputvalue: '',
       articleList: [
@@ -108,22 +122,9 @@ export default {
       ]
     }
   },
-  directives: {
-    waves
+  created() {
   },
-  props: {
-
-  },
-  components: {
-    lineBtn,
-    mdInput,
-    imgHover,
-    mTitle,
-    dropdownMenu
-  },
-  created () {
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

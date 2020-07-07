@@ -8,19 +8,25 @@
     >
       <h4>系统登录</h4>
       <el-form-item label="" prop="name">
-        <el-input  v-model="loginForm.name" placeholder="账号"></el-input>
+        <el-input v-model="loginForm.name" placeholder="账号"/>
       </el-form-item>
       <el-form-item label="" prop="pwd">
-        <el-input v-model="loginForm.pwd" placeholder="密码" type="password"></el-input>
+        <el-input v-model="loginForm.pwd" placeholder="密码" type="password"/>
       </el-form-item>
-      <el-button class="login-button" type="primary" :loading="loading" @click="login">登录</el-button>
+      <el-button :loading="loading" class="login-button" type="primary" @click="login">登录</el-button>
     </el-form>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+
+  },
+  data() {
     return {
       loginForm: {
         name: 'admin',
@@ -37,23 +43,17 @@ export default {
       loading: false
     }
   },
-  props: {
+  created() {
 
   },
-  components: {
-
-  },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    login () {
+    login() {
       this.$refs.loginForm.validate(vaild => {
         if (vaild) {
-          this.$store.dispatch('login', {name: this.loginForm.name}).then(code => {
+          this.$store.dispatch('login', { name: this.loginForm.name }).then(code => {
             if (code === 200) {
               this.$router.push('/')
             }

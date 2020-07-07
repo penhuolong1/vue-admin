@@ -37,7 +37,7 @@ const constantRoutes = [
 
 // 处理 Vue-router 报NavigationDuplicated的可能解决方案 https://www.cnblogs.com/rever/p/11577322.html
 const originalPush = Router.prototype.push
-Router.prototype.push = function push (location, onResolve, onReject) {
+Router.prototype.push = function push(location, onResolve, onReject) {
   if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
   return originalPush.call(this, location).catch(err => err)
 }
@@ -53,7 +53,7 @@ const router = createRouter()
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 // 重置路由
 
-export function resetRouter () {
+export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }

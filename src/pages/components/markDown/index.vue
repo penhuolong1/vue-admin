@@ -3,25 +3,25 @@
     <aside>
       通过tui-editor来实现富文本编辑
     </aside>
-    <markdown :content.sync="content"></markdown>
-    <div v-html="content"></div>
+    <markdown :content.sync="content"/>
+    <div v-html="content"/>
   </div>
 </template>
 
 <script>
 import markdown from '@/components/markdown'
 export default {
-  data () {
+  components: {
+    markdown
+  },
+  props: {},
+  data() {
     return {
       content: '内容1'
     }
   },
-  props: {},
-  components: {
-    markdown
-  },
-  created () {},
-  mounted () {},
+  created() {},
+  mounted() {},
   methods: {}
 }
 </script>

@@ -3,28 +3,28 @@
     <aside>
       通过sync来实现父子组件的数据同步
     </aside>
-    <child :inputValue.sync="value"></child>
+    <child :input-value.sync="value"/>
   </div>
 </template>
 
 <script>
 import child from './child'
 export default {
-  data () {
-    return {
-      value: '父组件传来的数据'
-    }
+  components: {
+    child
   },
   props: {
 
   },
-  components: {
-    child
+  data() {
+    return {
+      value: '父组件传来的数据'
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
