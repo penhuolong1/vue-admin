@@ -1,47 +1,52 @@
 <template>
-    <div class="tag-item-wrapper" @click="toPath" :class="{'active':active}">
-      {{item.name}}
-      <span class="el-icon-close" @click.prevent.stop="closeSelectedTag()" />
-    </div>
+  <div :class="{'active':active}" class="tag-item-wrapper" @click="toPath">
+    {{ item.name }}
+    <span class="el-icon-close" @click.prevent.stop="closeSelectedTag()" />
+  </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  data () {
+  components: {
+
+  },
+  props: {
+    item: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    },
+    active: {
+      type: Boolean,
+      default: false
+    },
+    index: {
+      type: Number,
+      default: null
+    }
+  },
+  data() {
     return {
       isShow: false,
       left: 0,
       top: 0
     }
   },
-  props: {
-    item: {
-      type: Object
-    },
-    active: {
-      type: Boolean
-    },
-    index: {
-      type: Number
-    }
-  },
-  components: {
-
-  },
-  created () {
-  },
-  mounted () {
-
-  },
   computed: {
     ...mapGetters([
       'tagViewList'
     ])
   },
+  created() {
+  },
+  mounted() {
+
+  },
   methods: {
     // 删除标签
-    closeSelectedTag () {
+    closeSelectedTag() {
       if (this.tagViewList.length === 1) { // 假如只有一个标签删除后跳转到首页
         this.$router.push('/')
       } else {
@@ -56,7 +61,7 @@ export default {
       // this.$router.push(this.tagViewList(this.index - 1).path)
     },
     // 跳转到该标签的位置
-    toPath () {
+    toPath() {
       this.$router.push(this.item.path)
       this.$store.commit('SET_INDEX', this.index)
     }

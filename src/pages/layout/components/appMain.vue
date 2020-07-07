@@ -1,30 +1,30 @@
 <template>
-    <div>
-      <transition name="fade-transform" mode="out-in">
-        <keep-alive>
-          <router-view />
-        </keep-alive>
-      </transition>
-    </div>
+  <div>
+    <transition name="fade-transform" mode="out-in">
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </transition>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
+  components: {
 
-    }
   },
   props: {
 
   },
-  components: {
+  data() {
+    return {
+
+    }
+  },
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {

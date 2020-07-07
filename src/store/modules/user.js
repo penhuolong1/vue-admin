@@ -1,5 +1,5 @@
-import {getToken, setToken, removeToken} from '@/utils/auth.js'
-import {login, logout, userInfo} from '@/api/user'
+import { getToken, setToken, removeToken } from '@/utils/auth.js'
+import { login, logout, userInfo } from '@/api/user'
 const user = {
   state: {
     name: '',
@@ -29,11 +29,11 @@ const user = {
   },
   actions: {
     // 登陆
-    login: ({commit}, userInfo) => {
-      let {name, password} = userInfo
+    login: ({ commit }, userInfo) => {
+      const { name, password } = userInfo
       return new Promise((resolve, reject) => {
-        login({name, password}).then(res => {
-          const {code, token} = res.data
+        login({ name, password }).then(res => {
+          const { code, token } = res.data
           if (code === 200) {
             commit('SET_TOKEN', token)
             setToken(token)
@@ -45,10 +45,10 @@ const user = {
       })
     },
     // 退出
-    loginOut: ({commit}) => {
+    loginOut: ({ commit }) => {
       return new Promise((resolve, reject) => {
         logout().then(res => {
-          let {code, token} = res.data
+          const { code, token } = res.data
           if (code === 200) {
             commit('SET_TOKEN', token)
             removeToken()
@@ -60,10 +60,10 @@ const user = {
       })
     },
     // 获取用户信息
-    userInfo: ({commit}, token) => {
+    userInfo: ({ commit }, token) => {
       return new Promise((resolve, reject) => {
-        userInfo({token}).then(res => {
-          let {code, data} = res.data
+        userInfo({ token }).then(res => {
+          const { code, data } = res.data
           if (code === 200) {
             commit('SET_NAME', data.name)
             commit('SET_ROLES', data.roles)
@@ -74,9 +74,9 @@ const user = {
         })
       })
     },
-    changeRole: ({commit}, role) => {
+    changeRole: ({ commit }, role) => {
       commit('SET_ROLES', [role])
-      let token = `${role}-token`
+      const token = `${role}-token`
       console.log('12333333')
       setToken(token)
     }

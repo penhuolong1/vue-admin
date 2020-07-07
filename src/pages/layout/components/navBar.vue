@@ -1,74 +1,74 @@
 <template>
-    <div class="header-wrapper">
-      <div>
-        <div id="toggle-menu" class="icon-wrapper" @click="toggleMenu">
-          <i class="el-icon-s-unfold menu-icon"></i>
-        </div>
-        <navigation></navigation>
+  <div class="header-wrapper">
+    <div>
+      <div id="toggle-menu" class="icon-wrapper" @click="toggleMenu">
+        <i class="el-icon-s-unfold menu-icon"/>
       </div>
-      <div>
-        <div class="icon-wrapper" id="search-icon">
-          <el-tooltip  effect="dark" content="搜索" placement="bottom">
-            <i class="el-icon-search"></i>
-          </el-tooltip>
-        </div>
-        <div class="icon-wrapper">
-          <el-tooltip  effect="dark" content="全屏" placement="bottom">
-            <i class="el-icon-full-screen"></i>
-          </el-tooltip>
-        </div>
-        <div class="icon-wrapper">
-          <el-tooltip  effect="dark" content="布局" placement="bottom">
-            <i class="el-icon-s-grid"></i>
-          </el-tooltip>
-        </div>
-        <div class="icon-wrapper">
-          <svg-icon class="svg-icon" icon-class="translate"></svg-icon>
-        </div>
-        <el-dropdown trigger="click">
-          <div class="avator-wrapper">
-            <img src="http://img2.imgtn.bdimg.com/it/u=433095846,3800291930&fm=11&gp=0.jpg" alt="">
-            <i class="el-icon-caret-bottom"></i>
-          </div>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>个人中心</el-dropdown-item>
-            <el-dropdown-item>首页</el-dropdown-item>
-            <el-dropdown-item>项目地址</el-dropdown-item>
-            <el-dropdown-item>Docs</el-dropdown-item>
-            <el-dropdown-item divided @click.native="loginOut">退出登录</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
+      <navigation/>
     </div>
+    <div>
+      <div id="search-icon" class="icon-wrapper">
+        <el-tooltip effect="dark" content="搜索" placement="bottom">
+          <i class="el-icon-search"/>
+        </el-tooltip>
+      </div>
+      <div class="icon-wrapper">
+        <el-tooltip effect="dark" content="全屏" placement="bottom">
+          <i class="el-icon-full-screen"/>
+        </el-tooltip>
+      </div>
+      <div class="icon-wrapper">
+        <el-tooltip effect="dark" content="布局" placement="bottom">
+          <i class="el-icon-s-grid"/>
+        </el-tooltip>
+      </div>
+      <div class="icon-wrapper">
+        <svg-icon class="svg-icon" icon-class="translate"/>
+      </div>
+      <el-dropdown trigger="click">
+        <div class="avator-wrapper">
+          <img src="http://img2.imgtn.bdimg.com/it/u=433095846,3800291930&fm=11&gp=0.jpg" alt="">
+          <i class="el-icon-caret-bottom"/>
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>个人中心</el-dropdown-item>
+          <el-dropdown-item>首页</el-dropdown-item>
+          <el-dropdown-item>项目地址</el-dropdown-item>
+          <el-dropdown-item>Docs</el-dropdown-item>
+          <el-dropdown-item divided @click.native="loginOut">退出登录</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
+  </div>
 </template>
 
 <script>
 import navigation from './navigation'
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    navigation
   },
   props: {
 
   },
-  components: {
-    navigation
+  data() {
+    return {
+
+    }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
-    loginOut () {
+    loginOut() {
       this.$store.dispatch('loginOut')
     },
     // 展开和隐藏菜单
-    toggleMenu () {
-      let isOpen = this.$store.state.sidebar.isOpen
+    toggleMenu() {
+      const isOpen = this.$store.state.sidebar.isOpen
       this.$store.commit('SET_ISOPEN', !isOpen)
     }
   }

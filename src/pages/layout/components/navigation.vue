@@ -1,39 +1,39 @@
 <template>
-    <div class="navigation-wrapper">
-      <transition name="breadcrumb">
-        <el-breadcrumb separator="/">
-          <el-breadcrumb-item v-for="(item, index) in this.$route.matched" :key="index" :to="{ path: item.path }" @click.native="toPath(item.path)">{{item.name}}</el-breadcrumb-item>
-        </el-breadcrumb>
-      </transition>
-    </div>
+  <div class="navigation-wrapper">
+    <transition name="breadcrumb">
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item v-for="(item, index) in this.$route.matched" :key="index" :to="{ path: item.path }" @click.native="toPath(item.path)">{{ item.name }}</el-breadcrumb-item>
+      </el-breadcrumb>
+    </transition>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      naviteList: []
-    }
+  components: {
+
   },
   props: {
 
   },
-  watch: {
+  data() {
+    return {
+      naviteList: []
+    }
   },
   computed: {
   },
-  components: {
+  watch: {
+  },
+  created() {
 
   },
-  created () {
-
-  },
-  mounted () {
+  mounted() {
 
   },
   methods: {
     // 跳转到指定页面
-    toPath (path) {
+    toPath(path) {
       this.$router.push(path)
     }
   }

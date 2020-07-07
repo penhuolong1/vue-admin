@@ -38,7 +38,10 @@ export default {
 
   },
   props: {
-    content: null
+    content: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {

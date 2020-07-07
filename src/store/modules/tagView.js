@@ -10,11 +10,11 @@ const tagView = {
   },
   mutations: {
     ADD_TAG: (state, view) => {
-      let list = state.tagViewList
+      const list = state.tagViewList
       if (!list && list.length === 0) {
         state.tagViewList.push(view)
       } else {
-        let index = list.findIndex(item => item.path === view.path)
+        const index = list.findIndex(item => item.path === view.path)
         if (index < 0) {
           state.tagViewList.push(view)
           state.tagViewActiveIndex = list.length - 1

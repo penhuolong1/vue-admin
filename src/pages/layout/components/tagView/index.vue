@@ -1,28 +1,34 @@
 <template>
-    <div class="tag-view-wrapper">
-      <div>
-        <tagItem
-          v-for="(item, index) in tagViewList"
-          :key="index"
-          :item="item"
-          :index="index"
-          :active="tagViewActiveIndex === index"
-          @contextmenu.prevent.native="showMenu($event, index)"
-        ></tagItem>
-      </div>
-       <ul class="other-features-wrapper" :style="{left: left+'px',top: top+'px'}" v-show="isShow">
-        <li @click="refresh">刷新</li>
-        <li @click="closeOther">关闭其他</li>
-        <li @click="closeAll">关闭所有</li>
-      </ul>
+  <div class="tag-view-wrapper">
+    <div>
+      <tagItem
+        v-for="(item, index) in tagViewList"
+        :key="index"
+        :item="item"
+        :index="index"
+        :active="tagViewActiveIndex === index"
+        @contextmenu.prevent.native="showMenu($event, index)"
+      />
     </div>
+    <ul v-show="isShow" :style="{left: left+'px',top: top+'px'}" class="other-features-wrapper">
+      <li @click="refresh">刷新</li>
+      <li @click="closeOther">关闭其他</li>
+      <li @click="closeAll">关闭所有</li>
+    </ul>
+  </div>
 </template>
 
 <script>
 import tagItem from './tagItem'
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  data () {
+  components: {
+    tagItem
+  },
+  props: {
+
+  },
+  data() {
     return {
       isShow: false,
       left: 0,
@@ -30,19 +36,22 @@ export default {
       index: ''
     }
   },
-  props: {
-
-  },
-  components: {
-    tagItem
-  },
-  created () {
-
+  computed: {
+    ...mapGetters([
+      'tagViewList',
+      'tagViewActiveIndex'
+    ]),
+    getRoutes() {
+      if (this.$route.path.indexOf('redirect') === -1) { // 判断如果不是刷新重定向的路由则加入标签的列表里面
+        this.$store.commit('ADD_TAG', this.$route)
+      }
+      return this.$route
+    }
   },
   watch: {
-    getRoutes () {
+    getRoutes() {
     },
-    isShow () {
+    isShow() {
       if (this.isShow) {
         document.body.addEventListener('click', this.closeMenu)
       } else {
@@ -50,44 +59,35 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters([
-      'tagViewList',
-      'tagViewActiveIndex'
-    ]),
-    getRoutes () {
-      if (this.$route.path.indexOf('redirect') === -1) { // 判断如果不是刷新重定向的路由则加入标签的列表里面
-        this.$store.commit('ADD_TAG', this.$route)
-      }
-      return this.$route
-    }
+  created() {
+
   },
-  mounted () {
+  mounted() {
   },
   methods: {
     // 显示菜单功能
-    showMenu (e, index) {
+    showMenu(e, index) {
       this.index = index
       this.left = e.screenX
       this.top = e.screenY - 100
       this.isShow = true
     },
     // 关闭菜单
-    closeMenu () {
+    closeMenu() {
       this.isShow = false
     },
     // 关闭所有
-    closeAll () {
+    closeAll() {
       this.$store.commit('DEL_ALL_LIST')
       this.$router.push('/')
     },
     // 关闭其他
-    closeOther () {
+    closeOther() {
       this.$router.push(this.tagViewList[this.index].path)
       this.$store.commit('DEL_ALL_LIST')
     },
     // 刷新
-    refresh () {
+    refresh() {
       this.$store.commit('SET_INDEX', this.index)
       this.$router.push(`/redirect${this.tagViewList[this.index].path}`)
     }
