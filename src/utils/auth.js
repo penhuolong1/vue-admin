@@ -1,5 +1,5 @@
 import cookie from 'js-cookie'
-import {COOKIEBASENAME} from './constval'
+import { COOKIEBASENAME } from './constval'
 
 const tokenkey = `${COOKIEBASENAME}TOKEN`
 
