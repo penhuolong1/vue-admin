@@ -263,6 +263,11 @@ export const asyncRoutes = [
         path: 'dynamicTable',
         component: () => import('@/pages/table/dynamicTable'),
         name: '动态table'
+      },
+      {
+        path: 'dragTable',
+        component: () => import('@/pages/table/dragTable'),
+        name: '可拖拽table'
       }
     ]
   },
