@@ -268,6 +268,11 @@ export const asyncRoutes = [
         path: 'dragTable',
         component: () => import('@/pages/table/dragTable'),
         name: '可拖拽table'
+      },
+      {
+        path: 'editTable',
+        component: () => import('@/pages/table/editTable'),
+        name: '可编辑table'
       }
     ]
   },
