@@ -276,6 +276,25 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/create',
+    alwaysShow: true, // will always show the root menu
+    name: '综合实例',
+    meta: {
+      title: '综合实例',
+      icon: 'el-icon-location',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/pages/example/create'),
+        name: '创建文章'
+      }
+    ]
+  },
 
   { path: '*', redirect: '/404', hidden: true }
 ]
